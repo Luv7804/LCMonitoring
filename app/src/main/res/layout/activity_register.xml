@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".Register"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/login_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Registration"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:backgroundTint="@color/primary"
+        app:cardPreventCornerOverlap="true"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="30dp"
+        android:layout_marginBottom="20dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Employee ID"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_employeeID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:hint="e.g. 123456789"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Employee Name"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="text"
+                android:hint="e.g. Abc Xyz"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mobile Number"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_mobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:hint="e.g. 9876543210"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CUG Number"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_CUGNumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:hint="e.g. 9876543210"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email ID"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_emailID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="textEmailAddress"
+                android:hint="e.g. lineclear123@gmail.com"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Designation"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_designation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="text"
+                android:hint="e.g. Your Job Position"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Password"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_createPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="textPassword"
+                android:hint="e.g. LineClear@123"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirm Password"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="textPassword"
+                android:hint="e.g. LineClear@123"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/register_button"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:text="Register"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_marginVertical="10dp"
+                android:layout_gravity="center_horizontal"
+                app:cornerRadius="25dp"
+                android:backgroundTint="@color/black"
+                tools:ignore="MissingClass"
+                />
+
+            <TextView
+                android:id="@+id/login_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Already have an Account ? Login"
+                android:textSize="17dp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    </ScrollView>
+
+</LinearLayout>
+
+
+
+
