@@ -1,20 +1,33 @@
 package com.example.lcmonitoring;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.rey.material.widget.EditText;
 
 public class Register extends AppCompatActivity {
+    FirebaseAuth mAuth;
+
 TextView login_text;
 Button register_button;
 TextInputEditText register_employeeID,register_name,register_mobileNumber,register_CUGNumber,register_emailID,register_designation,register_createPassword,register_confirmPassword;
@@ -23,7 +36,9 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        // ...
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
         login_text = findViewById(R.id.login_text);
         register_button = findViewById(R.id.register_button);
         login_text.setOnClickListener(new View.OnClickListener() {
@@ -55,9 +70,9 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
         String name = register_name.getText().toString().trim();
         String mobileNumber = register_mobileNumber.getText().toString().trim();
         String CUGNUmber = register_CUGNumber.getText().toString().trim();
-        String emailID = register_emailID.getText().toString().trim();
+        String email = register_emailID.getText().toString().trim();
         String designation = register_designation.getText().toString().trim();
-        String createPassword = register_createPassword.getText().toString().trim();
+        String password = register_createPassword.getText().toString().trim();
         String confirmPassword = register_confirmPassword.getText().toString().trim();
 
         //        Validation Of Registration
@@ -93,11 +108,11 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
             register_CUGNumber.requestFocus();
             return;
         }
-        if(emailID.isEmpty()){
+        if(email.isEmpty()){
             register_emailID.setError("Email ID is Required !");
             register_emailID.requestFocus();
             return;
-        }if(!Patterns.EMAIL_ADDRESS.matcher(emailID).matches()){
+        }if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             register_emailID.setError("Enter Proper Email ID !");
             register_emailID.requestFocus();
             return;
@@ -106,12 +121,12 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
             register_designation.setError("Designation is Required !");
             register_designation.requestFocus();
             return;
-        } if(createPassword.isEmpty()){
+        } if(password.isEmpty()){
             register_createPassword.setError("Password is Required !");
             register_createPassword.requestFocus();
             return;
         }
-        if(createPassword.length() < 8 ||createPassword.length() > 15){
+        if(password.length() < 8 ||password.length() > 15){
             register_createPassword.setError("Length is Between 8 to 15 !");
             register_createPassword.requestFocus();
             return;
@@ -120,13 +135,69 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
             register_confirmPassword.setError("Confirm Password is Required !");
             register_confirmPassword.requestFocus();
             return;
-        }if(!createPassword.equals(confirmPassword)){
+        }if(!password.equals(confirmPassword)){
             register_confirmPassword.setError("Confirm Password is Same as Create Password !");
             register_confirmPassword.requestFocus();
             return;
         }
-        else{
-          startActivity(new Intent(Register.this, Login.class));
-        }
+//        else{
+//          startActivity(new Intent(Register.this, Login.class));
+//        }
+        View progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+//        mAuth.createUserWithEmailAndPassword(emailID, createPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                Toast.makeText(Register.this, "Registerd successfully 2", Toast.LENGTH_LONG).show();
+//                if(task.isSuccessful()){
+//                    User user = new User(employeeID,name,mobileNumber,CUGNUmber,emailID,designation,createPassword,confirmPassword);
+//                    Toast.makeText(Register.this, "Registerd successfully 3", Toast.LENGTH_LONG).show();
+//                    FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Void> task) {
+//                                    if(task.isSuccessful()) {
+//                                        Toast.makeText(Register.this, "Registerd successfully", Toast.LENGTH_LONG).show();;
+//                                        progressBar.setVisibility(View.GONE);
+//                                        startActivity(new Intent(Register.this, Login.class));
+//                                    }
+//                                    else{
+//                                        Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
+//                                        progressBar.setVisibility(View.GONE);
+//                                    }
+//                                }
+//                            });
+//
+//                }else{
+//                    Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();;
+//                    progressBar.setVisibility(View.GONE);
+//                }
+//            }
+//        });
+
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            progressBar.setVisibility(View.GONE);
+                            startActivity(new Intent(Register.this, Login.class));
+
+//                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(Register.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+//                            updateUI(null);
+                        }
+                    }
+                });
+
     }
 }

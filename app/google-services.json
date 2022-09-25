@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "209381494509",
+    "project_id": "lcmonitoring-ee2fc",
+    "storage_bucket": "lcmonitoring-ee2fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209381494509:android:f655fb2f7f3b3d208186e4",
+        "android_client_info": {
+          "package_name": "com.example.lcmonitoring"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209381494509-98lg00r5761leg9q1mq5uf5immc92qer.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuONHbJm4RpCOM4u6CKSJ6HaRSKCWHRWM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209381494509-98lg00r5761leg9q1mq5uf5immc92qer.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
