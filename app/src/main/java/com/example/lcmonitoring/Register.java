@@ -13,6 +13,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +23,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.rey.material.widget.EditText;
+
+import java.util.Objects;
 
 public class Register extends AppCompatActivity {
     FirebaseAuth mAuth;
@@ -140,64 +144,43 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
             register_confirmPassword.requestFocus();
             return;
         }
-//        else{
-//          startActivity(new Intent(Register.this, Login.class));
-//        }
-        View progressBar = findViewById(R.id.progressBar);
+        View progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
-//        mAuth.createUserWithEmailAndPassword(emailID, createPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                Toast.makeText(Register.this, "Registerd successfully 2", Toast.LENGTH_LONG).show();
-//                if(task.isSuccessful()){
-//                    User user = new User(employeeID,name,mobileNumber,CUGNUmber,emailID,designation,createPassword,confirmPassword);
-//                    Toast.makeText(Register.this, "Registerd successfully 3", Toast.LENGTH_LONG).show();
-//                    FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-//                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    if(task.isSuccessful()) {
-//                                        Toast.makeText(Register.this, "Registerd successfully", Toast.LENGTH_LONG).show();;
-//                                        progressBar.setVisibility(View.GONE);
-//                                        startActivity(new Intent(Register.this, Login.class));
-//                                    }
-//                                    else{
-//                                        Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
-//                                        progressBar.setVisibility(View.GONE);
-//                                    }
-//                                }
-//                            });
-//
-//                }else{
-//                    Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();;
-//                    progressBar.setVisibility(View.GONE);
-//                }
-//            }
-//        });
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
 
+                if(task.isSuccessful()){
+                    // Write a message to the database
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("User");
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            progressBar.setVisibility(View.GONE);
-                            startActivity(new Intent(Register.this, Login.class));
+                    User user = new User(employeeID,name,mobileNumber,CUGNUmber,email,designation,password,confirmPassword);
+//                   DatabaseReference realTimeData = database.getReference("User").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+//                  myRef.setValue(user).addOnCompleteListener(new OnCompleteListener<Void>()
+                    FirebaseDatabase.getInstance().getReference("User").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>(){
 
-//                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(Register.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
-//                            updateUI(null);
-                        }
-                    }
-                });
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()) {
+                                        Toast.makeText(Register.this, "Registerd successfully", Toast.LENGTH_LONG).show();;
+                                        progressBar.setVisibility(View.GONE);
+                                        startActivity(new Intent(Register.this, Login.class));
+                                    }
+                                    else{
+                                        Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+
+                }else{
+                    Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();;
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
 
     }
 }

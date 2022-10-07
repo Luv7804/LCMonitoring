@@ -12,6 +12,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +26,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class Login extends AppCompatActivity {
     FirebaseAuth mAuth;
     Button login_button;
-    TextView register_text;
+    TextView register_text,forgot_text;
     TextInputEditText login_employeeID,login_createPassword;
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,13 @@ public class Login extends AppCompatActivity {
         register_text =findViewById(R.id.register_text);
         login_employeeID = findViewById(R.id.login_employeeID);
         login_button = findViewById(R.id.login_button);
+        forgot_text = findViewById(R.id.forgot_text);
+        forgot_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this,ForgotPassword.class));
+            }
+        });
         register_text.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
@@ -48,10 +56,12 @@ public class Login extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 login();
             }
         });
     }
+
     public void login(){
         login_employeeID = findViewById(R.id.login_employeeID);
         String employeeID = login_employeeID.getText().toString().trim();

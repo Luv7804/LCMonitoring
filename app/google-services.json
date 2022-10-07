@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "209381494509",
-    "project_id": "lcmonitoring-ee2fc",
-    "storage_bucket": "lcmonitoring-ee2fc.appspot.com"
+    "project_number": "221253491151",
+    "project_id": "lcmonitoring-41fa7",
+    "storage_bucket": "lcmonitoring-41fa7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:209381494509:android:f655fb2f7f3b3d208186e4",
+        "mobilesdk_app_id": "1:221253491151:android:41faadf92e21b0ccfadaba",
         "android_client_info": {
           "package_name": "com.example.lcmonitoring"
         }
       },
       "oauth_client": [
         {
-          "client_id": "209381494509-98lg00r5761leg9q1mq5uf5immc92qer.apps.googleusercontent.com",
+          "client_id": "221253491151-64ci28leicmfhs7s1l06e5nttt77nieo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBuONHbJm4RpCOM4u6CKSJ6HaRSKCWHRWM"
+          "current_key": "AIzaSyCOMbblyk7Hj2yFXaZe1KysbkzV6XaM3Dw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "209381494509-98lg00r5761leg9q1mq5uf5immc92qer.apps.googleusercontent.com",
+              "client_id": "221253491151-64ci28leicmfhs7s1l06e5nttt77nieo.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

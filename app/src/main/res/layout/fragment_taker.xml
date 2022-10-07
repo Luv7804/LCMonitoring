@@ -5,28 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context=".Login"
+    android:gravity="center"
+    tools:context=".TakerFragment"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/white"
-        android:text="Hello ... \nWellcome Back !"
-        android:textSize="40dp"
-        />
 
-    <TextView
-        android:id="@+id/login_heading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Login"
-        android:textColor="@color/white"
-        android:textSize="40dp"
-        android:textStyle="bold" />
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
@@ -47,18 +29,18 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email ID"
+                android:text="Substation Name"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/white"/>
             <com.google.android.material.textfield.TextInputEditText
-               android:id="@+id/login_employeeID"
+                android:id="@+id/login_employeeID"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="20dp"
-                android:inputType="textEmailAddress"
-                android:hint="e.g. abc123@gmail.com"
+                android:inputType="text"
+                android:hint="Mota Mahika"
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintColor"
                 android:layout_marginBottom="20dp"
@@ -68,7 +50,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Password"
+                android:text="Substation Wise Feeder"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:layout_marginBottom="10dp"
@@ -78,8 +60,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="20dp"
-                android:inputType="textPassword"
-                android:hint="e.g. LineClear@123"
+                android:inputType="text"
+                android:hint="Bhunava Feeder (11 KV) "
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintColor"
                 android:layout_marginBottom="20dp"
@@ -87,19 +69,52 @@
                 android:padding="10dp"
                 android:ems="15"/>
             <TextView
-                android:id="@+id/forgot_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Forgot Password ? "
+                android:text="Reason For LCP"
+                android:textStyle="bold"
+                android:textSize="20dp"
                 android:layout_marginBottom="10dp"
-                android:textSize="17dp"
-                android:textColor="@color/white"
-                />
+                android:textColor="@color/white"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_createPassword2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="text"
+                android:hint="The Earth Wire IS Broken"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintColor"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Work Done For Permission"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_createPassword3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="text"
+                android:hint="Line Close"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintColor"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_button"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:text="Login"
+                android:text="Take Permit"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:layout_marginVertical="10dp"
@@ -108,14 +123,6 @@
                 android:backgroundTint="@color/black"
                 tools:ignore="MissingClass"
                 />
-            <TextView
-                android:id="@+id/register_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Don't have an Account ? create account"
-                android:textSize="17dp"
-                android:textColor="@color/white"
-                android:layout_marginBottom="20dp"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
