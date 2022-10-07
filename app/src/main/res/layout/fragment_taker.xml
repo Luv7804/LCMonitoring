@@ -92,7 +92,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Work Done For Permission"
+                android:text="Other Details"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:layout_marginBottom="10dp"
@@ -104,6 +104,27 @@
                 android:textSize="20dp"
                 android:inputType="text"
                 android:hint="Line Close"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintColor"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:ems="15"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Substation CUG Number"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/taker_giver_CUGNumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:inputType="number"
+                android:hint="9876543210"
                 android:textColor="@color/black"
                 android:textColorHint="@color/hintColor"
                 android:layout_marginBottom="20dp"

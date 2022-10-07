@@ -29,67 +29,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Substation Name"
+                android:text="All the Details Sent bt the Sender"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/white"/>
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_employeeID"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="20dp"
-                android:inputType="text"
-                android:hint="Mota Mahika"
-                android:textColorHint="@color/hintColor"
-                android:textColor="@color/black"
-                android:layout_marginBottom="20dp"
-                android:background="@color/white"
-                android:padding="10dp"
-                android:ems="15"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Substation Wise Feeder"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/white"/>
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_createPassword"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="20dp"
-                android:inputType="text"
-                android:hint="Bhunava Feeder (11 KV) "
-                android:textColor="@color/black"
-
-                android:textColorHint="@color/hintColor"
-                android:layout_marginBottom="20dp"
-                android:background="@color/white"
-                android:padding="10dp"
-                android:ems="15"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Reason For LCP"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/white"/>
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_createPassword2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="20dp"
-                android:inputType="text"
-                android:hint="The Earth Wire IS Broken"
-                android:textColor="@color/black"
-                android:textColorHint="@color/hintColor"
-                android:layout_marginBottom="20dp"
-                android:background="@color/white"
-                android:padding="10dp"
-                android:ems="15"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -110,7 +54,6 @@
                 android:layout_marginBottom="20dp"
                 android:background="@color/white"
                 android:textColor="@color/black"
-
                 android:padding="10dp"
                 android:ems="15"/>
             <com.google.android.material.button.MaterialButton

@@ -36,7 +36,7 @@ public class viewPagerLCAdapter extends FragmentPagerAdapter {
             return "Taker";
         }
         else if(position == 1){
-            return "PendingLC";
+            return "Pending LC";
         }
         else{
             return "Giver";
