@@ -60,6 +60,7 @@ public class ForgotPassword extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(ForgotPassword.this,"Check you Email Address",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ForgotPassword.this, Login.class));
                     }
                     else
                     {

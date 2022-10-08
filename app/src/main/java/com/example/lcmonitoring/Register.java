@@ -1,15 +1,11 @@
 package com.example.lcmonitoring;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -20,21 +16,26 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.rey.material.widget.EditText;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class Register extends AppCompatActivity {
     FirebaseAuth mAuth;
-
-TextView login_text;
-Button register_button;
-TextInputEditText register_employeeID,register_name,register_mobileNumber,register_CUGNumber,register_emailID,register_designation,register_createPassword,register_confirmPassword;
+    TextView login_text;
+    Button register_button;
+//    String verificationID;
+    TextInputEditText register_employeeID,register_name,register_mobileNumber,register_CUGNumber,register_emailID,register_designation,register_createPassword,register_confirmPassword;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
         });
 
     }
+
     public void register_user(){
 
         register_employeeID = findViewById(R.id.register_employeeID);
@@ -98,7 +100,7 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
             register_mobileNumber.setError("Mobile Number is Required !");
             register_mobileNumber.requestFocus();
             return;
-        }if(mobileNumber.length() < 10 || mobileNumber.length() > 10){
+        }if(mobileNumber.length() != 10){
             register_mobileNumber.setError("Enter 10 Digit Number !");
             register_mobileNumber.requestFocus();
             return;
@@ -107,7 +109,7 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
             register_CUGNumber.setError("CUG Number is Required !");
             register_CUGNumber.requestFocus();
             return;
-        }if(CUGNUmber.length() < 10 || CUGNUmber.length() > 10){
+        }if(CUGNUmber.length() != 10){
             register_CUGNumber.setError("Enter 10 Digit Number !");
             register_CUGNumber.requestFocus();
             return;
@@ -164,9 +166,12 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()) {
+//                                        sendverificationcode(CUGNUmber);
                                         Toast.makeText(Register.this, "Registerd successfully", Toast.LENGTH_LONG).show();;
                                         progressBar.setVisibility(View.GONE);
-                                        startActivity(new Intent(Register.this, Login.class));
+                                        Intent intent = new Intent(Register.this, Login.class);
+//                                        intent.putExtra("CUGNumber",CUGNUmber);
+                                        startActivity(intent);
                                     }
                                     else{
                                         Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
@@ -174,7 +179,6 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
                                     }
                                 }
                             });
-
                 }else{
                     Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();;
                     progressBar.setVisibility(View.GONE);
@@ -183,4 +187,45 @@ TextInputEditText register_employeeID,register_name,register_mobileNumber,regist
         });
 
     }
+//    private void sendverificationcode(String CUGNUmber) {
+//        PhoneAuthOptions options =
+//                PhoneAuthOptions.newBuilder(mAuth)
+//                        .setPhoneNumber("+91"+CUGNUmber)       // Phone number to verify
+//                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+//                        .setActivity(this)                 // Activity (for callback binding)
+//                        .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
+//                        .build();
+//        PhoneAuthProvider.verifyPhoneNumber(options);
+//    }
+//    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+//
+//        @Override
+//        public void onVerificationCompleted(PhoneAuthCredential credential) {
+//            final String code = credential.getSmsCode();
+//            if(code != null){
+//                verifyCode(code);
+//            }
+//        }
+//
+//        @Override
+//        public void onVerificationFailed(@NonNull FirebaseException e) {
+//            Toast.makeText(Register.this, "Verification Failed", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        @Override
+//        public void onCodeSent(@NonNull String s,
+//                @NonNull PhoneAuthProvider.ForceResendingToken token) {
+//            super.onCodeSent(s,token);
+//            verificationID = s;
+//
+//        }
+//    };
+//    private void  verifyCode(String code){
+//        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationID,code);
+//        signinbyCredentials(credential);
+//    }
+//
+//    private void signinbyCredentials(PhoneAuthCredential credential) {
+//
+//    }
 }
