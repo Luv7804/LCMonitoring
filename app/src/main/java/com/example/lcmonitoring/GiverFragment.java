@@ -58,7 +58,7 @@ public class GiverFragment extends Fragment {
                     loginUser = task.getResult().getValue();
 
                     Log.d("firebase", String.valueOf(loginUser));
-                    Log.d("firebase", "cugnumber :: " + loginUser.cugnumber);
+                    Log.d("firebase", "cugnumber :: " + loginUser);
 
 //                    fetchRelatedTakersData(loginUser.cugnumber);
                 }
@@ -108,22 +108,22 @@ public class GiverFragment extends Fragment {
 
         //        logReference = databaseReference.child("Taker").orderByChild("cugnumber").equalTo("9714562025");
 
-        databaseReference.child("Taker").orderByChild("cugnumber").equalTo(cugNumber).addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    loginUser = task.getResult().getValue();
-
-                    Log.d("firebase", String.valueOf(loginUser));
-                    Log.d("firebase", "cugnumber :: " + loginUser.getClass());
-
-                    fetchRelatedTakersData(loginUser.cugnumber);
-                }
-            }
-        });
+//        databaseReference.child("Taker").orderByChild("cugnumber").equalTo(cugNumber).addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//                }
+//                else {
+//                    loginUser = task.getResult().getValue();
+//
+//                    Log.d("firebase", String.valueOf(loginUser));
+//                    Log.d("firebase", "cugnumber :: " + loginUser.getClass());
+//
+//                    fetchRelatedTakersData(loginUser.cugnumber);
+//                }
+//            }
+//        });
     }
 
 }
